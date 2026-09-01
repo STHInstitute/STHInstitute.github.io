@@ -36,29 +36,51 @@
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
-  <!-- KaTeX CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
-
-<!-- KaTeX JS -->
-<script src="//cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script>
-
-<!-- 自动渲染公式 -->
+<!-- KaTeX 手动加载 -->
+<!-- KaTeX 手动加载并强制渲染 -->
+<!-- KaTeX 直接渲染 HTML 中的公式 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var mathElements = document.querySelectorAll('.math');
-  for (var i = 0; i < mathElements.length; i++) {
-    var element = mathElements[i];
-    katex.render(element.textContent, element, {
-      throwOnError: false
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('🔧 开始渲染 HTML 中的 KaTeX 公式...');
+    
+    // 渲染所有 .katex-block 中的内容
+    var blocks = document.querySelectorAll('.katex-block');
+    console.log('📐 找到 ' + blocks.length + ' 个块级公式');
+    blocks.forEach(function(el) {
+      try {
+        katex.render(el.textContent, el, {
+          displayMode: true,
+          throwOnError: false
+        });
+      } catch (e) {
+        console.log('⚠️ 渲染失败:', e.message);
+        el.style.color = 'red';
+        el.textContent = '渲染失败: ' + e.message;
+      }
     });
-  }
-});
+    
+    // 渲染所有 .katex-inline 中的内容
+    var inlines = document.querySelectorAll('.katex-inline');
+    console.log('📐 找到 ' + inlines.length + ' 个行内公式');
+    inlines.forEach(function(el) {
+      try {
+        katex.render(el.textContent, el, {
+          displayMode: false,
+          throwOnError: false
+        });
+      } catch (e) {
+        console.log('⚠️ 渲染失败:', e.message);
+        el.style.color = 'red';
+        el.textContent = '渲染失败: ' + e.message;
+      }
+    });
+    
+    console.log('✅ KaTeX 渲染完成');
+  });
 </script>
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.2"></head>
+<meta name="generator" content="Hexo 8.1.2"></head> 
 
 <body>
   <div id="container">
@@ -118,20 +140,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2><span id="什么是天梯科学院">什么是天梯科学院？</span></h2><p>“天梯”（Stairway to Heaven）来源于英国摇滚乐队Led Zeppelin的歌曲《Stairway to Heaven》。而“科学院”则意味着这是一个<del>主要</del>用于学术探讨与交流的网站。</p>
+        <h2 id="什么是天梯科学院？"><a href="#什么是天梯科学院？" class="headerlink" title="什么是天梯科学院？"></a>什么是天梯科学院？</h2><p>“天梯”（Stairway to Heaven）来源于英国摇滚乐队Led Zeppelin的歌曲《Stairway to Heaven》。而“科学院”则意味着这是一个<del>主要</del>用于学术探讨与交流的网站。</p>
 <hr>
-<h2><span id="作者简介">作者简介</span></h2><p>该网站作者为RGoH，目前就读于兰州大学物理科学与技术学院，物理学（理论物理）专业。QQ:2080699829，欢迎来访。</p>
-<h3><span id="我会在这里写什么">我会在这里写什么？</span></h3><ul>
+<h2 id="作者简介"><a href="#作者简介" class="headerlink" title="作者简介"></a>作者简介</h2><p>该网站作者为RGoH，目前就读于兰州大学物理科学与技术学院，物理学（理论物理）专业。QQ:2080699829，欢迎来访。</p>
+<h3 id="我会在这里写什么？"><a href="#我会在这里写什么？" class="headerlink" title="我会在这里写什么？"></a>我会在这里写什么？</h3><ul>
 <li>学习笔记，书籍推荐</li>
 <li>个人思考感悟总结</li>
 <li>科普小文章</li>
 <li><del>神秘小想法·</del></li>
 </ul>
-<h3><span id="总之感谢各位光临">总之，感谢各位光临。</span></h3>
+<h3 id="总之，感谢各位光临。"><a href="#总之，感谢各位光临。" class="headerlink" title="总之，感谢各位光临。"></a>总之，感谢各位光临。</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sthinstitute.github.io/2026/08/29/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E5%A4%A9%E6%A2%AF%E7%A7%91%E5%AD%A6%E9%99%A2%EF%BC%81/" data-id="cuiduW5ufp2TXinZ6RUpT5PyB" data-title="欢迎来到天梯科学院！" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sthinstitute.github.io/2026/08/29/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E5%A4%A9%E6%A2%AF%E7%A7%91%E5%AD%A6%E9%99%A2%EF%BC%81/" data-id="cuid79wn13zNSRJwzKbVJIoa6" data-title="欢迎来到天梯科学院！" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -200,6 +222,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/08/31/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/">这是一篇测试文章</a>
+          </li>
         
           <li>
             <a href="/2026/08/30/%E7%BD%91%E7%AB%99%E6%97%A5%E5%BF%97/">网站日志</a>
