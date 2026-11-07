@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://sthinstitute.github.io/images/%E5%BA%93%E4%BB%91%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%8A%BF%E8%83%BD.png">
 <meta property="og:image" content="https://sthinstitute.github.io/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-11-07%20123640.png">
 <meta property="article:published_time" content="2026-09-12T04:08:15.000Z">
-<meta property="article:modified_time" content="2026-11-07T04:39:17.991Z">
+<meta property="article:modified_time" content="2026-11-07T04:46:56.249Z">
 <meta property="article:author" content="RGoH">
 <meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary">
@@ -502,7 +502,7 @@ B=\begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}
 A \otimes B = \begin{pmatrix} a_{11}b_{11}&a_{11}b_{12}&a_{12}b_{11}&a_{12}b_{12}\\
                               a_{11}b_{21}&a_{11}b_{22}&a_{12}b_{21}&a_{12}b_{22}\\
                               a_{21}b_{11}&a_{21}b_{12}&a_{22}b_{11}&a_{22}b_{12}\\
-                              a_{21}b_{21}&a_{21}b_{22}&a_{22}b_{21}&a_{22}b_{22}
+                              a_{21}b_{21}&a_{21}b_{22}&a_{22}b_{21}&a_{22}b_{22}\end{pmatrix}
 </div>
 在MATLAB中输入以下代码并执行，观察运行结果：
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">A=[<span class="number">1</span> <span class="number">2</span>;<span class="number">3</span> <span class="number">4</span>];</span><br><span class="line">B=[<span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span>];</span><br><span class="line">K=kron(A,B);</span><br><span class="line"><span class="built_in">disp</span>(K);</span><br></pre></td></tr></table></figure>
