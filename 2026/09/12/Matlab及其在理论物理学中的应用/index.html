@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   
   
-  <title>Matlab及其在理论物理学中的应用（持续更新中） | 天梯科学院</title>
+  <title>MATLAB及其在理论物理学中的应用（持续更新中） | 天梯科学院</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="第零章  绪论《计算物理基础Ⅱ》课程复习 。 前几天想用Matlab算个方程来着，发现自己去年学过的计算物理学竟然忘得精光 悲，于是便有了写一篇笔记来复习一下Matlab的想法，虽然我本人并不认可 “理论物理学就是计算” 这种观点 数学结构才是最重要、最本质的，计算物理是没有灵魂的！。但不容否认的是，计算机的出现对于物理学是十分重要的，因此，我还是很乐意提升自己一些计算物理学的能力的 当然，做计算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Matlab及其在理论物理学中的应用（持续更新中）">
+<meta property="og:title" content="MATLAB及其在理论物理学中的应用（持续更新中）">
 <meta property="og:url" content="https://sthinstitute.github.io/2026/09/12/Matlab%E5%8F%8A%E5%85%B6%E5%9C%A8%E7%90%86%E8%AE%BA%E7%89%A9%E7%90%86%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="天梯科学院">
 <meta property="og:description" content="第零章  绪论《计算物理基础Ⅱ》课程复习 。 前几天想用Matlab算个方程来着，发现自己去年学过的计算物理学竟然忘得精光 悲，于是便有了写一篇笔记来复习一下Matlab的想法，虽然我本人并不认可 “理论物理学就是计算” 这种观点 数学结构才是最重要、最本质的，计算物理是没有灵魂的！。但不容否认的是，计算机的出现对于物理学是十分重要的，因此，我还是很乐意提升自己一些计算物理学的能力的 当然，做计算">
@@ -36,8 +36,9 @@
 <meta property="og:image" content="https://sthinstitute.github.io/images/%E8%B0%90%E6%8C%AF%E5%AD%90%E7%AC%AC5%E6%BF%80%E5%8F%91%E6%80%81.png">
 <meta property="og:image" content="https://sthinstitute.github.io/images/%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E8%A1%8C%E8%B5%B0.png">
 <meta property="og:image" content="https://sthinstitute.github.io/images/%E5%BA%93%E4%BB%91%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%8A%BF%E8%83%BD.png">
+<meta property="og:image" content="https://sthinstitute.github.io/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-11-07%20123640.png">
 <meta property="article:published_time" content="2026-09-12T04:08:15.000Z">
-<meta property="article:modified_time" content="2026-09-19T13:37:50.193Z">
+<meta property="article:modified_time" content="2026-11-07T04:39:17.991Z">
 <meta property="article:author" content="RGoH">
 <meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary">
@@ -151,7 +152,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Matlab及其在理论物理学中的应用（持续更新中）
+      MATLAB及其在理论物理学中的应用（持续更新中）
     </h1>
   
 
@@ -385,13 +386,13 @@ S_z= \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1 \end{pmatrix}
 
 <h2 id="第三节-向量化"><a href="#第三节-向量化" class="headerlink" title="第三节 向量化"></a>第三节 向量化</h2><h3 id="3-1-为什么向量化是好的？"><a href="#3-1-为什么向量化是好的？" class="headerlink" title="3.1 为什么向量化是好的？"></a>3.1 为什么向量化是好的？</h3><p>在Matlab中，向量化可以极大地提升计算机的数值运算速度。</p>
 <p>在命令行窗口输入以下代码：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">N=<span class="number">1e7</span>; <span class="comment">%共10^7个点</span></span><br><span class="line"><span class="comment">% 使用循环语句计算</span></span><br><span class="line">tic; <span class="comment">%tic用于启动计时</span></span><br><span class="line">s1=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:N</span><br><span class="line">    s1=s1+<span class="built_in">sin</span>(<span class="built_in">i</span>)*<span class="built_in">exp</span>(<span class="built_in">i</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">t1=toc; <span class="comment">%toc用于读取记录的时间</span></span><br><span class="line"><span class="comment">% 使用向量化计算</span></span><br><span class="line">tic;</span><br><span class="line">n=<span class="number">1</span>:N;</span><br><span class="line">s2=sum(<span class="built_in">sin</span>(n).*<span class="built_in">exp</span>(<span class="built_in">i</span>));</span><br><span class="line">t2=toc;</span><br><span class="line">fprintf(<span class="string">&#x27;使用循环语句计算用时：%.4f秒\n使用向量化计算用时：%.4f秒\n&#x27;</span>,t1,t2);</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">N=<span class="number">1e7</span>; <span class="comment">%共10^7个点</span></span><br><span class="line"><span class="comment">% 使用循环语句计算</span></span><br><span class="line">tic; <span class="comment">%tic用于启动计时</span></span><br><span class="line">s1=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:N</span><br><span class="line">    s1=s1+<span class="built_in">sin</span>(<span class="built_in">i</span>)*<span class="built_in">exp</span>(<span class="built_in">i</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">t1=toc; <span class="comment">%toc用于读取记录的时间</span></span><br><span class="line"><span class="comment">% 使用向量化计算</span></span><br><span class="line">tic;</span><br><span class="line">n=<span class="number">1</span>:N;</span><br><span class="line">s2=sum(<span class="built_in">sin</span>(n).*<span class="built_in">exp</span>(n));</span><br><span class="line">t2=toc;</span><br><span class="line">fprintf(<span class="string">&#x27;使用循环语句计算用时：%.4f秒\n使用向量化计算用时：%.4f秒\n&#x27;</span>,t1,t2);</span><br></pre></td></tr></table></figure>
 <img src="/images/屏幕截图 2026-09-16 162222.png" alt="图3.1.1" width="50%">
 
 <p>可以看到，在计算向量化后的矩阵要比计算循环语句快了将近10倍。这是因为，Matlab底层是用C&#x2F;Fortran写的高度优化矩阵库（BLAS&#x2F;LAPACK），矩阵计算在其内部运行，对整个内存块进行计算，而循环语句则是Matlab作为解释器，逐行逐条反复进行计算。事实上，选用的点越多，计算的公式越复杂，向量化计算的速度优势便越明显。</p>
 <p>我们给出几种向量化的方法。</p>
 <h3 id="3-2-方法一：用-“-”-、“-”-、“-”替代逐元素循环"><a href="#3-2-方法一：用-“-”-、“-”-、“-”替代逐元素循环" class="headerlink" title="3.2 方法一：用 “ .* ” 、“ .^ ” 、“ .&#x2F; ”替代逐元素循环"></a>3.2 方法一：用 “ .* ” 、“ .^ ” 、“ .&#x2F; ”替代逐元素循环</h3><p>例如：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">x=<span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">1000</span>);</span><br><span class="line">y=<span class="built_in">zeros</span>(<span class="built_in">size</span>(x));</span><br><span class="line"><span class="comment">%使用循环语句计算</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="built_in">length</span>(x)</span><br><span class="line">    y(<span class="built_in">i</span>)=x(<span class="built_in">i</span>)^<span class="number">2</span>+<span class="number">3</span>*x(<span class="built_in">i</span>)+<span class="built_in">i</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%使用向量化计算</span></span><br><span class="line">y=x.^<span class="number">2</span>+<span class="number">3.</span>^x+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">x=<span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">1000</span>);</span><br><span class="line">y=<span class="built_in">zeros</span>(<span class="built_in">size</span>(x));</span><br><span class="line"><span class="comment">%使用循环语句计算</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="built_in">length</span>(x)</span><br><span class="line">    y(<span class="built_in">i</span>)=x(<span class="built_in">i</span>)^<span class="number">2</span>+<span class="number">3</span>*x(<span class="built_in">i</span>)+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%使用向量化计算</span></span><br><span class="line">y=x.^<span class="number">2</span>+<span class="number">3.</span>^x+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <p>循环语句的数字计算是一个一个元素依次按照循环进行处理的，而向量计算则是直接对向量这一整体进行处理的。</p>
 <h3 id="3-3-方法二：逻辑索引替代-if-判断"><a href="#3-3-方法二：逻辑索引替代-if-判断" class="headerlink" title="3.3 方法二：逻辑索引替代 if 判断"></a>3.3 方法二：逻辑索引替代 if 判断</h3><p>例如：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">x=<span class="built_in">rand</span>(<span class="number">1</span>,<span class="number">1000</span>)*<span class="number">10</span>;</span><br><span class="line">y=<span class="built_in">zeros</span>(<span class="built_in">size</span>(x));</span><br><span class="line"><span class="comment">% 循环与条件语句嵌套</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="built_in">length</span>(x)</span><br><span class="line">    <span class="keyword">if</span> x(<span class="built_in">i</span>)&gt;<span class="number">5</span></span><br><span class="line">        y(<span class="built_in">i</span>)=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%向量化</span></span><br><span class="line">y(x&gt;<span class="number">5</span>)=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
@@ -404,7 +405,7 @@ S_z= \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1 \end{pmatrix}
 <h3 id="3-4-方法三：-用外积替代嵌套循环"><a href="#3-4-方法三：-用外积替代嵌套循环" class="headerlink" title="3.4 方法三： 用外积替代嵌套循环"></a>3.4 方法三： 用外积替代嵌套循环</h3><p>例如：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">n=<span class="number">1000</span>;</span><br><span class="line">A=<span class="built_in">zeros</span>(n,n);</span><br><span class="line"><span class="comment">%嵌套循环</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:n</span><br><span class="line">        A(<span class="built_in">i</span>,<span class="built_in">j</span>)=<span class="number">1</span>/(<span class="built_in">i</span>+<span class="built_in">j</span><span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%向量化(外积化)</span></span><br><span class="line"><span class="built_in">i</span>=(<span class="number">1</span>:n)&#x27;;</span><br><span class="line"><span class="built_in">j</span>=<span class="number">1</span>:n;</span><br><span class="line">A=<span class="number">1.</span>/(<span class="built_in">i</span>+<span class="built_in">j</span><span class="number">-1</span>); <span class="comment">%i+j可以自动扩展为n×n的矩阵，这一特性被称为&quot;广播&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>广播：在进行不同大小的数组进行逐元素运算时，Matlab会自动扩展较小数组的维度来匹配较大数组。</p>
+<p>广播：在进行不同大小的数组进行逐元素运算时，Matlab会自动扩展较小数组的维度来匹配较大数组。<br>tips: 广播是在MATLAB R2016b版本之后才支持的。</p>
 <img src="/images/屏幕截图 2026-09-17 132922.png" alt="图3.4.1" width="50%">
 
 <p>可以看到，这里的计算过程为：</p>
@@ -436,7 +437,7 @@ C=A+B=\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} + \begin{pmatrix} 4 & 5 & 6 \end
 
 <img src="/images/随机行走.png" alt="图3.5.2" width="50%">
 
-<p>tips:这是我们第一次使用Matlab中的绘图函数“ plot( ) ” ，事实上我应该单开一节讲述这一函数的用法的，但因为笔记内容安排不当<del>我也是边想边写的，可能很多知识的顺序安排的并不妥当</del> ，我们与它提前见面了，不过不需要担心，我们在后面会很快地学习并掌握这一函数的用法。</p>
+<p>tips:这是我们第一次使用Matlab中的绘图函数“ plot( ) ” ，事实上我应该单开一节讲述这一函数的用法的，但因为笔记内容安排不当，我们与它提前见面了，不过不需要担心，我们在后面会很快地学习并掌握这一函数的用法。</p>
 <h3 id="3-6-练习"><a href="#3-6-练习" class="headerlink" title="3.6 练习"></a>3.6 练习</h3><p>1、使用向量化语言改写以下循环：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">10</span>,<span class="number">10000</span>);</span><br><span class="line">y=<span class="built_in">zeros</span>(<span class="built_in">size</span>(x));</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="built_in">length</span>(x)</span><br><span class="line">    y(<span class="built_in">i</span>)=<span class="built_in">sin</span>(x(<span class="built_in">i</span>))*<span class="built_in">exp</span>(-x(<span class="built_in">i</span>));</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>解答：</p>
@@ -462,11 +463,71 @@ C=A+B=\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} + \begin{pmatrix} 4 & 5 & 6 \end
 
 <p>对于真实情形，应考虑x无序排列的情况：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="built_in">rand</span>(N,<span class="number">1</span>);  </span><br><span class="line">D=<span class="built_in">abs</span>(x-x&#x27;);</span><br></pre></td></tr></table></figure>
+<h2 id="第四节-张量积与多体系统"><a href="#第四节-张量积与多体系统" class="headerlink" title="第四节 张量积与多体系统"></a>第四节 张量积与多体系统</h2><h3 id="4-1-张量积"><a href="#4-1-张量积" class="headerlink" title="4.1 张量积"></a>4.1 张量积</h3><p>对于自旋1&#x2F;2的单粒子，具有自旋向上和自旋向下两种状态，其态空间是2维的：</p>
+<div class="katex-block">
+\vert \uparrow \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix} ，\quad \vert \downarrow \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+</div>
+
+<p>而对于两个这样的粒子，需要用到张量积，其态空间是<span class="katex-inline">2 \times 2 &#x3D; 4</span>维的：</p>
+<div class="katex-block">
+\vert \uparrow \uparrow \rangle = \begin{pmatrix} 1\\0\end{pmatrix} \otimes \begin{pmatrix} 1\\0\end{pmatrix} = \begin{pmatrix} 1\\0\\0\\0\end{pmatrix}, \quad
+\vert \uparrow \downarrow \rangle = \begin{pmatrix} 1\\0\end{pmatrix} \otimes \begin{pmatrix} 0\\1\end{pmatrix} = \begin{pmatrix} 0\\1\\0\\0\end{pmatrix}
+</div>
+
+<div class="katex-block">
+\vert \downarrow \uparrow \rangle = \begin{pmatrix} 0\\1\end{pmatrix} \otimes \begin{pmatrix} 1\\0\end{pmatrix} = \begin{pmatrix} 0\\0\\1\\0\end{pmatrix}, \quad
+\vert \downarrow \downarrow \rangle = \begin{pmatrix} 0\\1\end{pmatrix} \otimes \begin{pmatrix} 0\\1\end{pmatrix} = \begin{pmatrix} 0\\0\\0\\1\end{pmatrix}
+</div>
+
+<p>我们可以构造算符<span class="katex-inline">\hat{A}</span>使其仅作用在粒子1上：<span class="katex-inline">\hat{A} \otimes I </span>，以及<span class="katex-inline">\hat{B}</span>使其仅作用在粒子2上：<span class="katex-inline"> I \otimes \hat{B} </span>。</p>
+<p>tips：回顾张量积符号<span class="katex-inline">\otimes</span>的作用规则：<span class="katex-inline">(\hat{A}  \otimes \hat{B})(\vert\psi\rangle \otimes \vert\phi\rangle )&#x3D;\hat{A}\vert\psi\rangle  \otimes\hat{B}\vert\phi\rangle </span>。以此，仅作用在<span class="katex-inline">\psi</span>上的算符<span class="katex-inline">\hat{A}_ {\psi}</span>应构建为<span class="katex-inline"> \hat{A}&#x3D;(\hat{A} \otimes I)(\vert \psi\rangle \otimes\vert \phi\rangle )&#x3D;\hat{A}\vert \psi\rangle \otimes I \vert \phi\rangle </span>，而仅作用在<span class="katex-inline">\phi</span>上的算符<span class="katex-inline">\hat{B}_{\phi}&#x3D;(I \otimes \hat{B})( \vert\psi\rangle \otimes\vert \phi\rangle )&#x3D;I \vert \psi\rangle  \otimes \hat{B}\vert \phi\rangle </span>。这便是上文中算符<span class="katex-inline">\hat{A}</span>和<span class="katex-inline">\hat{B}</span>如此构造的原因。</p>
+<h3 id="4-2-kron-函数"><a href="#4-2-kron-函数" class="headerlink" title="4.2 kron( )函数"></a>4.2 kron( )函数</h3><p>在MATLAB中，张量积由“ kron( ) ”函数实现。<br>首先来看看它的数学定义：<br>若<span class="katex-inline">A&#x3D;m \times n</span>，<span class="katex-inline">B&#x3D;p \times q</span>，则<span class="katex-inline">A \otimes B &#x3D; mp \times nq </span>:</p>
+<div class="katex-block">
+A \otimes B =
+\begin{pmatrix}
+a_{11}B & a_{12}B & \cdots & a_{1n}B \\
+a_{21}B & a_{22}B & \cdots & a_{2n}B \\
+\vdots  & \vdots  & \ddots & \vdots  \\
+a_{m1}B & a_{m2}B & \cdots & a_{mn}B
+\end{pmatrix}
+</div>
+
+<p>具体地，例如，若</p>
+<div class="katex-block">
+A=\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}，\quad 
+B=\begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}
+</div>
+则
+<div class="katex-block">
+A \otimes B = \begin{pmatrix} a_{11}b_{11}&a_{11}b_{12}&a_{12}b_{11}&a_{12}b_{12}\\
+                              a_{11}b_{21}&a_{11}b_{22}&a_{12}b_{21}&a_{12}b_{22}\\
+                              a_{21}b_{11}&a_{21}b_{12}&a_{22}b_{11}&a_{22}b_{12}\\
+                              a_{21}b_{21}&a_{21}b_{22}&a_{22}b_{21}&a_{22}b_{22}
+</div>
+在MATLAB中输入以下代码并执行，观察运行结果：
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">A=[<span class="number">1</span> <span class="number">2</span>;<span class="number">3</span> <span class="number">4</span>];</span><br><span class="line">B=[<span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span>];</span><br><span class="line">K=kron(A,B);</span><br><span class="line"><span class="built_in">disp</span>(K);</span><br></pre></td></tr></table></figure>
+可以看到，“ kron( ) ”函数将矩阵A中的每个矩阵元乘以矩阵B，得到了4个矩阵块<span class="katex-inline">K_{ij}</span>:
+<div class="katex-block">
+K_{11}=a_{11}B,K_{12}=a_{12}B,K_{21}=a_{21}B,K_{22}=a_{22}B
+</div>
+
+<p>张量积有两个重要的性质：<br>性质一：张量积满足结合律。<br>即：<span class="katex-inline">(A \otimes B )\otimes C&#x3D;A \otimes (B \otimes C)</span><br>性质二：混合积公式。<br>即：<span class="katex-inline">(A \otimes B)(C \otimes D)&#x3D;(AC)\otimes(BD)<br>可以用“ kron( ) ”函数验证：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">A=[<span class="number">1</span> <span class="number">2</span>;<span class="number">3</span> <span class="number">4</span>];</span><br><span class="line">B=[<span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span>];</span><br><span class="line">C=[<span class="number">9</span> <span class="number">10</span>;<span class="number">11</span> <span class="number">12</span>];</span><br><span class="line">D=[<span class="number">13</span> <span class="number">14</span>;<span class="number">15</span> <span class="number">16</span>];</span><br><span class="line"><span class="built_in">disp</span>(<span class="built_in">isequal</span>(kron(kron(A,B),C),kron(A,kron(B,C))));</span><br><span class="line"><span class="built_in">disp</span>(<span class="built_in">isequal</span>(kron(A,B)*kron(C,D),kron((A*C),(B*D))));</span><br></pre></td></tr></table></figure>
+<img src="/images/屏幕截图 2026-11-07 123640.png" alt="图4.2.1" width="50%">
+可以看到，结果返回的逻辑值均为1，验证了这两条性质的正确性。
+
+
+
+
+
+                               
+
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sthinstitute.github.io/2026/09/12/Matlab%E5%8F%8A%E5%85%B6%E5%9C%A8%E7%90%86%E8%AE%BA%E7%89%A9%E7%90%86%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" data-id="cuid493G6AkAjePG6IpaBT7CM" data-title="Matlab及其在理论物理学中的应用（持续更新中）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sthinstitute.github.io/2026/09/12/Matlab%E5%8F%8A%E5%85%B6%E5%9C%A8%E7%90%86%E8%AE%BA%E7%89%A9%E7%90%86%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" data-id="cuidmR1_Ld5T3xtsqP4gIsckn" data-title="MATLAB及其在理论物理学中的应用（持续更新中）" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -524,15 +585,11 @@ C=A+B=\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} + \begin{pmatrix} 4 & 5 & 6 \end
       <ul>
         
           <li>
-            <a href="/2026/09/12/Matlab%E5%8F%8A%E5%85%B6%E5%9C%A8%E7%90%86%E8%AE%BA%E7%89%A9%E7%90%86%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">Matlab及其在理论物理学中的应用（持续更新中）</a>
+            <a href="/2026/09/12/Matlab%E5%8F%8A%E5%85%B6%E5%9C%A8%E7%90%86%E8%AE%BA%E7%89%A9%E7%90%86%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">MATLAB及其在理论物理学中的应用（持续更新中）</a>
           </li>
         
           <li>
             <a href="/2026/08/31/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/">这是一篇测试文章</a>
-          </li>
-        
-          <li>
-            <a href="/2026/08/30/%E7%BD%91%E7%AB%99%E6%97%A5%E5%BF%97/">网站日志</a>
           </li>
         
           <li>
@@ -555,7 +612,7 @@ C=A+B=\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} + \begin{pmatrix} 4 & 5 & 6 \end
           <li style="padding: 2px 0;">
             <a href="/authors/RGoH" style="font-size: 13px; color: #666;">
               RGoH
-              <span style="color: #bbb; font-size: 12px; margin-left: 5px;">(4)</span>
+              <span style="color: #bbb; font-size: 12px; margin-left: 5px;">(3)</span>
             </a>
           </li>
         
