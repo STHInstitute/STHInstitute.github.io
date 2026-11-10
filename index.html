@@ -146,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sthinstitute.github.io/2026/08/29/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E5%A4%A9%E6%A2%AF%E7%A7%91%E5%AD%A6%E9%99%A2%EF%BC%81/" data-id="cuidQArkuPS48U5Xx2wdfTIp6" data-title="欢迎来到天梯科学院！" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sthinstitute.github.io/2026/08/29/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E5%A4%A9%E6%A2%AF%E7%A7%91%E5%AD%A6%E9%99%A2%EF%BC%81/" data-id="cuidK0jlzEL4CMgedCe4O0lQv" data-title="欢迎来到天梯科学院！" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -249,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sthinstitute.github.io/AIlearn-0/" data-id="cuidPCuun1A8LxA9ZjJdVWbF4" data-title="从零开始的AI学习" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sthinstitute.github.io/AIlearn-0/" data-id="cuidE-Gjo3rbAu_dgXuyMllR4" data-title="从零开始的AI学习" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -292,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sthinstitute.github.io/math-physics-2/" data-id="cuidOqHU_o_0uWNU5jgNn7Gyl" data-title="数学物理方法2笔记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sthinstitute.github.io/math-physics-2/" data-id="cuid6JkfvhOWPK1Iiryr-ZskZ" data-title="数学物理方法2笔记" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -772,7 +772,7 @@ S_{2x}=I \otimes \sigma_x,S_{2y}=I \otimes \sigma_y,S_{2z}=I \otimes \sigma_z
 </div>
 这里，我们仅计算部分以作示例，其余的读者可自行验证：
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 验证：</span></span><br><span class="line"><span class="built_in">disp</span>(S1x*state_11) <span class="comment">% S_1x|↑↑⟩=|↓↑⟩=1/2*[0 0 1 0]^T</span></span><br><span class="line"><span class="built_in">disp</span>(S1y*state_10) <span class="comment">% S_1y|↑↓⟩=i|↓↓⟩=1/2*[0 0 0 1i]^T</span></span><br><span class="line"><span class="built_in">disp</span>(S1z*state_01) <span class="comment">% S_1z|↓↑⟩=-|↓↑⟩=1/2*[0 0 -1 0]^T</span></span><br><span class="line"><span class="built_in">disp</span>(S2z*state_01) <span class="comment">% S_2z|↓↑⟩=+|↓↑⟩=1/2*[0 0 1 0]^T</span></span><br></pre></td></tr></table></figure>
-我们可以验证自旋算符间的对易关系：<span class="katex-inline">[S_{ix},S_{jy}]=i \hbar S_{iz} \delta_{ij}，i、j=1，2</span>:
+我们可以验证自旋算符间的对易关系：<span class="katex-inline">[S_{ai},S_{bj}]=i \hbar \epsilon_{ijk} S_{ak} \delta_{ab}，</span>:
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 验证对易关系：</span></span><br><span class="line">commute_1z=S1x*S1y-S1y*S1x;</span><br><span class="line">commute_2z=S2x*S2y-S2y*S2x;</span><br><span class="line">commute_12z=S1x*S2y-S2y*S1x;</span><br><span class="line">err1=norm(commute_1z<span class="number">-1</span><span class="built_in">i</span>*hbar*S1z);</span><br><span class="line">err2=norm(commute_2z<span class="number">-1</span><span class="built_in">i</span>*hbar*S2z);</span><br><span class="line">fprintf(<span class="string">&#x27;粒子1对易关系误差：%.8f\n&#x27;</span>,err1);</span><br><span class="line">fprintf(<span class="string">&#x27;粒子2对易关系误差：%.8f\n&#x27;</span>,err2);</span><br><span class="line">fprintf(<span class="string">&#x27;粒子1与粒子2的算符对易：\nS1x*S2y-S2y*S1x=\n&#x27;</span>)</span><br><span class="line"><span class="built_in">disp</span>(commute_12z);</span><br></pre></td></tr></table></figure>
 
 <h3 id="4-3-Heisenberg模型"><a href="#4-3-Heisenberg模型" class="headerlink" title="4.3 Heisenberg模型"></a>4.3 Heisenberg模型</h3><p>Heisenberg模型是强关联电子系统的最简模型，其用于描述两个（或多个）自旋通过“交换相互作用”进行耦合的体系。其有效哈密顿量如下：</p>
@@ -797,18 +797,36 @@ MATLAB代码如下：
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[V,D]=eig(H);</span><br><span class="line">fprintf(<span class="string">&#x27;\nE\t\t\tS(S+1)hbar^2\n&#x27;</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">4</span></span><br><span class="line">    v=V(:,<span class="built_in">i</span>);</span><br><span class="line">    E_val=<span class="built_in">real</span>(D(<span class="built_in">i</span>,<span class="built_in">i</span>)); <span class="comment">% real()函数用于提取实部</span></span><br><span class="line">    S2_val=<span class="built_in">real</span>(v&#x27;*Stot2*v);</span><br><span class="line">    fprintf(<span class="string">&#x27;%.4f\t\t\t%.4f\n&#x27;</span>,E_val,S2_val);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <img src="/images/MATLAB及其在理论物理学中的应用/屏幕截图 2026-11-10 153537.png" alt="图4.4.1" width="50%">
 可以看到，结果为：
-| E | S(S+1) | 
-|--------|------|
-| -0.75 | 0 | 
-| 0.25 | 2 | 
-| 0.25 | 2 | 
-| 0.25 | 2 | 
-即对于单态，自旋反平行，<span class="katex-inline">S=0</span>,<span class="katex-inline">S(S+1)=0</span>；而对于三重态，<span class="katex-inline">S=1</span>,<span class="katex-inline">S(S+1)=2</span>。
 
+<table>
+<thead>
+<tr>
+<th>E</th>
+<th>S(S+1)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-0.75</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0.25</td>
+<td>2</td>
+</tr>
+<tr>
+<td>0.25</td>
+<td>2</td>
+</tr>
+<tr>
+<td>0.25</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<p>即对于单态，自旋反平行，<span class="katex-inline">S&#x3D;0</span>,<span class="katex-inline">S(S+1)&#x3D;0</span>；而对于三重态，<span class="katex-inline">S&#x3D;1</span>,<span class="katex-inline">S(S+1)&#x3D;2</span>。</p>
 <p>当然，我们可以验证以下，例如对单态：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">singlet=[<span class="number">0</span>;<span class="number">1</span>;<span class="number">-1</span>;<span class="number">0</span>]/<span class="built_in">sqrt</span>(<span class="number">2</span>); <span class="comment">% (|↑↓&gt;-|↓↑&gt;)/√2</span></span><br><span class="line">fprintf(<span class="string">&#x27;单态能量：%.4f\n&#x27;</span>,singlet&#x27;*H*singlet);</span><br><span class="line">Stot2=(S1x+S2x)^<span class="number">2</span>+(S1y+S2y)^<span class="number">2</span>+(S1z+S2z)^<span class="number">2</span>;</span><br><span class="line">fprintf(<span class="string">&#x27;单态S(S+1)：%.4f\n&#x27;</span>,singlet&#x27;*Stot2*singlet);</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-5-三个自旋1-2粒子"><a href="#4-5-三个自旋1-2粒子" class="headerlink" title="4.5 三个自旋1&#x2F;2粒子"></a>4.5 三个自旋1&#x2F;2粒子</h3><p>考虑三个自旋1&#x2F;2的粒子，态空间维数为8，需要用三次kron( )函数构造：</p>
+<h3 id="4-5-三个自旋1-2粒子"><a href="#4-5-三个自旋1-2粒子" class="headerlink" title="4.5 三个自旋1&#x2F;2粒子"></a>4.5 三个自旋1&#x2F;2粒子</h3><p>考虑三个自旋1&#x2F;2的粒子，态空间维数为8，需要用两次kron( )函数构造：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">hbar=<span class="number">1</span>;J=<span class="number">1</span>;</span><br><span class="line">Sx=hbar/<span class="number">2</span>*[<span class="number">0</span> <span class="number">1</span>;<span class="number">1</span> <span class="number">0</span>];</span><br><span class="line">Sy=hbar/<span class="number">2</span>*[<span class="number">0</span> <span class="number">-1</span><span class="built_in">i</span>;<span class="number">1</span><span class="built_in">i</span> <span class="number">0</span>];</span><br><span class="line">Sz=hbar/<span class="number">2</span>*[<span class="number">1</span> <span class="number">0</span>;<span class="number">0</span> <span class="number">-1</span>];</span><br><span class="line">I2=<span class="built_in">eye</span>(<span class="number">2</span>);</span><br><span class="line">S1x=kron(kron(Sx,I2),I2);S1y=kron(kron(Sy,I2),I2);S1z=kron(kron(Sz,I2),I2);</span><br><span class="line">S2x=kron(kron(I2,Sx),I2);S2y=kron(kron(I2,Sy),I2);S2z=kron(kron(I2,Sz),I2);</span><br><span class="line">S3x=kron(kron(I2,I2),Sx);S3y=kron(kron(I2,I2),Sy);S3z=kron(kron(I2,I2),Sz);</span><br></pre></td></tr></table></figure>
 <p>这里，kron(kron(A,B),C)即<span class="katex-inline">A \otimes B \otimes C </span>，分别对应三个粒子的算符。</p>
 <p>现在考虑三自旋粒子Heisenberg链。对于开链，仅有粒子1、2和粒子2、3的耦合，其哈密顿量为：</p>
@@ -834,7 +852,7 @@ H=J(\vec{S_{1}} \cdot \vec{S_{2}}+\vec{S_{2}} \cdot \vec{S_{3}})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sthinstitute.github.io/matlabapp-theoryphy/" data-id="cuidJ5IbqhCxQNccXsMv9ZH81" data-title="MATLAB及其在理论物理学中的应用" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sthinstitute.github.io/matlabapp-theoryphy/" data-id="cuidfJraJ2KUj9Gvf7uVeSPe3" data-title="MATLAB及其在理论物理学中的应用" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -977,7 +995,7 @@ R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sthinstitute.github.io/2026/08/31/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" data-id="cuid3ePTKF-lwlF8aUs4ovS8m" data-title="这是一篇测试文章" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sthinstitute.github.io/2026/08/31/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" data-id="cuidvd1CzzDvB8LMlObWzygO4" data-title="这是一篇测试文章" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -1025,7 +1043,7 @@ R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sthinstitute.github.io/2026/08/30/%E7%BD%91%E7%AB%99%E6%97%A5%E5%BF%97/" data-id="cuid2L7JUSvj-rCnRMkOfOMj-" data-title="网站日志" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sthinstitute.github.io/2026/08/30/%E7%BD%91%E7%AB%99%E6%97%A5%E5%BF%97/" data-id="cuidftrdcsJhp5Db2fDfwmgqI" data-title="网站日志" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
